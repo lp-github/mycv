@@ -1,0 +1,103 @@
+﻿  demo.cpp
+c:\users\administrator\source\repos\imagestitching\imagestitching\imageassistance.h(37): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+c:\users\administrator\source\repos\imagestitching\imagestitching\imageassistance.h(38): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+c:\users\administrator\source\repos\imagestitching\imagestitching\imageassistance.h(53): warning C4244: “=”: 从“double”转换到“unsigned char”，可能丢失数据
+c:\users\administrator\source\repos\imagestitching\imagestitching\imageassistance.h(54): warning C4244: “=”: 从“double”转换到“unsigned char”，可能丢失数据
+c:\users\administrator\source\repos\imagestitching\imagestitching\imageassistance.h(55): warning C4244: “=”: 从“double”转换到“unsigned char”，可能丢失数据
+c:\users\administrator\source\repos\imagestitching\imagestitching\imageassistance.h(23): warning C4101: “drcpoint”: 未引用的局部变量
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(47156): warning C4477: “fprintf”: 格式字符串“%lu”需要类型“unsigned long”的参数，但可变参数 14 拥有了类型“unsigned __int64”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(47156): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(47156): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(47156): note: 请考虑在格式字符串中使用“%I64u”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(47142): note: 编译 类 模板 成员函数 "const cimg_library::CImg<unsigned char> &cimg_library::CImg<unsigned char>::print(const char *const ,const bool) const" 时
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(47232): note: 参见对正在编译的函数 模板 实例化“const cimg_library::CImg<unsigned char> &cimg_library::CImg<unsigned char>::print(const char *const ,const bool) const”的引用
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53294): note: 参见对正在编译的 类 模板 实例化 "cimg_library::CImg<unsigned char>" 的引用
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(55452): note: 参见对正在编译的 类 模板 实例化 "cimg_library::CImgList<T>" 的引用
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53293): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53293): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53293): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53293): note: 请考虑在格式字符串中使用“%I64u”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53214): note: 编译 类 模板 成员函数 "cimg_library::CImgList<T> &cimg_library::CImgList<T>::_load_cimg(FILE *const ,const char *const )" 时
+          with
+          [
+              T=unsigned char
+          ]
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53193): note: 参见对正在编译的函数 模板 实例化“cimg_library::CImgList<T> &cimg_library::CImgList<T>::_load_cimg(FILE *const ,const char *const )”的引用
+          with
+          [
+              T=unsigned char
+          ]
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(56441): note: 参见对正在编译的 类 模板 实例化 "cimg_library::CImgList<T>" 的引用
+          with
+          [
+              T=unsigned char
+          ]
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53294): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53294): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53294): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53294): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53295): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53295): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53295): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53295): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53296): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53296): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53296): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53296): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53297): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53297): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53297): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53297): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53298): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53298): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53298): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53298): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53299): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53299): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53299): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53299): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53300): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53300): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53300): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53300): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53301): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53301): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53301): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53301): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53302): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53302): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53302): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53302): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53303): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53303): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53303): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53303): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53304): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53304): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53304): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53304): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53305): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53305): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53305): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53305): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53306): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53306): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53306): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53306): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53307): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53307): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53307): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53307): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53308): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53308): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53308): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53308): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53309): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53309): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53309): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53309): note: 请考虑在格式字符串中使用“%I64u”
+c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53310): warning C4477: “sscanf”: 格式字符串“%lu”需要类型“unsigned long *”的参数，但可变参数 5 拥有了类型“unsigned __int64 *”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53310): note: 请考虑在格式字符串中使用“%llu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53310): note: 请考虑在格式字符串中使用“%Iu”
+  c:\users\administrator\source\repos\imagestitching\imagestitching\cimg.h(53310): note: 请考虑在格式字符串中使用“%I64u”
+  imageStitching.vcxproj -> C:\Users\Administrator\source\repos\imageStitching\x64\Debug\imageStitching.exe
