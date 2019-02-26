@@ -1,0 +1,560 @@
+auto img = imread(testFile);
+	if (img.empty()) {
+		cout << "cannot open image" << endl;
+	}
+	
+	int rows = img.rows;
+	int cols = img.cols;
+	for (int i = 0; i < cols; i++) {
+		img.at<Vec3b>(100, i)[0] = 0;
+		img.at<Vec3b>(100, i)[1] = 0;
+		img.at<Vec3b>(100, i)[2] = 255;
+	}
+	imshow("img", img);
+
+	waitKey(0);
+	imwrite("img.jpg", img);
+	destroyWindow("img");
+	double e = 0.0000001;
+	double max = 1, min = 0;
+	double mid = -1;
+	while (1) {
+		mid = (max + min) / 2;
+		if (pow(mid, 37) == 0.6) {
+			
+		}
+		if (max - min <= e) {
+			break;
+		}
+
+		if (pow(mid, 37) > 0.6) {
+			max = mid;
+		}
+		else if (pow(mid, 37) < 0.6) {
+			min = mid;
+		}
+		else {
+			break;
+		}
+	}
+	cout << mid << endl;
+	test t;
+	t.train();
+	t.testTestData();
+	t.testTrainData();
+	t.testSingleDigitOnA4();
+	cout << "\ntest over" << endl;
+	while (1);
+	//test cvmat
+	/*Mat test(2, 1, CV_32SC1);
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 1; j++) {
+			test.at<int>(i, j) = i * 10 + j * 1;
+			auto x = test.at<int>(i, j);
+			cout << x << "\t";
+		}
+		cout << endl;
+	}
+	//for(int i = )
+	cout << test << endl;
+	while (1);*/
+    char tr_imagedb[]="train-images.idx3-ubyte";
+    char tr_labledb[]="train-labels.idx1-ubyte";
+    char test_imagedb[]="t10k-images.idx3-ubyte";
+    char test_labledb[]="t10k-labels.idx1-ubyte";
+	
+	vector < vector<float> > tr_data(n_trimg,vector<float>(n_features));
+	vector <int> tr_lables(n_trimg);
+	vector < vector<float> > test_data(n_testimg,vector<float>(n_features));
+	vector <int> test_lables(n_testimg);
+	
+	// Reading Databases
+	cout<<"Reading Databases...\n";
+    tr_data=read_images_extract_features(tr_imagedb,n_trimg);
+	cout<<"fine traing data...\n";
+    tr_lables=read_lables(tr_labledb,n_trimg);
+	cout<<"fine traing labels...\n";
+    test_data=read_images_extract_features(test_imagedb,n_testimg);
+	cout<<"fine testing data...\n";
+	test_lables=read_lables(test_labledb,n_testimg);
+	cout<<"fine testing labels...\n";
+	
+/**------------------------------------------------------------------------------SVM---------------------------------------------------------------------------------------**/	
+	
+	cout<<"Running SVM...\n";
+	//Putting all data to Matrix of opencv
+	Mat tr_dataMat(n_trimg, n_features, CV_32FC1);  
+	Mat tr_lablesMat(n_trimg, 1, CV_32SC1);
+	Mat test_dataMat(n_testimg, n_features, CV_32FC1);  
+	Mat test_lablesMat(n_testimg, 1, CV_32SC1);
+	Mat tr_results(n_trimg, 1, CV_32SC1);
+	Mat test_results(n_testimg, 1, CV_32SC1);
+	//gettype
+	auto dddd = tr_results.data;
+	//uchar* aaaa;
+
+	//auto a = tr_results.at()
+	for(int i=0;i<n_trimg;++i)
+	{
+		for(int j=0;j<n_features;++j)
+		{
+			tr_dataMat.at<float>(i,j)=tr_data[i][j];
+		}
+	}
+	
+	for(int i=0;i<n_trimg;++i)
+	{
+		tr_lablesMat.at<int>(i,0)=tr_lables[i];
+	}
+	
+	for(int i=0;i<n_testimg;++i)
+	{
+		for(int j=0;j<n_features;++j)
+		{
+			test_dataMat.at<float>(i,j)=test_data[i][j];
+		}
+	}
+	for(int i=0;i<n_testimg;++i)
+	{
+		test_lablesMat.at<int>(i,0)=test_lables[i];
+		cout << test_lablesMat.at<float>(i, 0)<<endl;
+	}
+
+	auto svm = SVM::create();
+	svm->setType(ml::SVM::NU_SVC);
+	svm->setKernel(ml::SVM::POLY);
+	svm->setTermCriteria(cv::TermCriteria(cv::TermCriteria::MAX_ITER, 100, 1e-6));
+	svm->setGamma(SVM::POLY);
+	svm->setDegree(SVM::POLY);
+	svm->setCoef0(SVM::POLY);
+	svm->setP(SVM::EPS_SVR);
+	svm->setNu(0.1);
+
+    svm->train(tr_dataMat,cv::ml::SampleTypes::ROW_SAMPLE, tr_lablesMat); 
+	//svm->train(tr_dataMat,)
+
+	svm->predict(tr_dataMat, tr_results);
+	cout << "the result as shown" << endl;
+	//tr_dataMat.
+	svm->predict(test_dataMat, test_results);
+	cout << "ok" << endl;
+	//auto tr_result_data = tr_results.data;
+	
+	for (int i = 0; i < 10; i++) {
+		//cout << i << "with label: " << tr_result_data[i]<<endl;
+		//test_results.at<int>(i, 0) *= ;
+	
+		auto num = test_results.at<float>(i,0);
+		//auto ptr = test_results.ptr<short>(i);
+		//cout << num << endl;
+	}
+	while (1);
+	return 0;
+
+	/*int thisx = xsrc;
+		int thisy = ysrc;
+		int nextx = xsrc + 1;
+		int nexty = ysrc + 1;
+		if (nextx == newsrc.width()) {
+			nextx = xsrc;
+		}
+		if (nexty == newsrc.height()) {
+			nexty = ysrc;
+		}
+		int xpa = thisx;
+		int xpb = thisx + 1;
+		int xpc = thisx;
+		int xpd = thisx + 1;
+		int ypa = thisy;
+		int ypb = thisy;
+		int ypc = thisy + 1;
+		int ypd = thisy + 1;
+
+		double colorA = newsrc(thisx, thisy);
+		double colorB = newsrc(nextx, thisy);
+		double colorC = newsrc(thisx, nexty);
+		double colorD = newsrc(nextx, nexty);
+		double colorUP = colorA * (xpa - x) + colorB*(x - xpa);
+		double colorDOWN = colorC * (xpd - x) + colorD * (x - xpc);
+		double color = colorUP * (ypc - y) + colorDOWN * (y - ypa);*/
+
+
+void test::testSingleDigitOnA4()
+{
+	//read sample image
+	auto filename = "testSet\\good samples\\16340042.jpg";
+	auto img = imread(filename);
+
+	CImg<unsigned char> src = convertFromMatToCImg(img);
+	//src.resize(600, 800);
+	string studentNumber = "", phoneNumber = "", privateIdentityNumber = "";
+	stringstream ss;
+	src.display();
+	//while (1);
+	//segmentation;
+	Otsu otsu;
+	auto seg = otsu.ImageSegmentationProcessing(src);
+	
+	seg.display();
+	//resize
+	//seg.resize(600, 800);
+	//seg.display();
+
+
+	//erosion and expansion
+	int times = 3;
+	for (int i = 0; i < times; i++) {
+		erosion(seg);
+	}
+	cout << "after fushi 3 times" << endl;
+	seg.display();
+	for (int i = 0; i < times; i++) {
+		//expansion(seg);
+	}
+	cout << "after expand 3 times" << endl;
+	seg.display();
+	seg.resize(600, 800);
+	seg.display();
+	//use seg as the new src;
+	CImg<unsigned char> newsrc(seg);
+	//fushi A4
+	CImg<unsigned char> temp(seg.width(), seg.height(), 1, 1);
+	cimg_forXY(seg, x, y) {
+		int depressed = 0;
+		for (int i = -1; i < 2; i++) {
+			for (int j = -1; j < 2; j++) {
+				int xa = x + i;
+				int ya = y + j;
+				if (xa < 0 || xa >= seg.width() || ya < 0 || ya >= seg.height()) {
+					depressed++;
+					continue;
+				}
+				if (seg(xa, ya) == 255) {
+					depressed++;
+				}
+			}
+		}
+		temp(x, y) = depressed == 9 ? 0 : seg(x, y);
+	}
+	temp.display();
+	//hough trans to detect edge
+	houghTrans ht;
+	auto htimg = ht.hough_trans(temp, 200);
+	auto htdeimg = ht.draw_edge();
+	htimg.display();
+	htdeimg.display();
+	ht.paint_point();
+
+	//reorder the point 
+	/*
+	0 1
+	2 3
+	*/
+
+	auto pointx = ht.pointx;
+	auto pointy = ht.pointy;
+	vector<int> orderx, ordery;
+	orderx.reserve(4);
+	ordery.reserve(4);
+	
+	assert(pointx.size() == 4 && pointy.size() == 4);
+	vector<int> sum;
+	
+	for (int i = 0; i < 4; i++) {
+		int temp = pointx[i] + pointy[i]*10;
+		sum.push_back(temp);
+		
+	}
+	//reorder by pop-queue small to large
+	for (int i = 3; i > 0; i--) {
+		for (int j = 0; j < i; j++) {
+			if (sum[j] > sum[j + 1]) {
+				//exchange
+				sum[j] = sum[j] + sum[j + 1];
+				sum[j + 1] = sum[j] - sum[j + 1];
+				sum[j] = sum[j] - sum[j + 1];
+
+				pointx[j] = pointx[j] + pointx[j + 1];
+				pointx[j + 1] = pointx[j] - pointx[j + 1];
+				pointx[j] = pointx[j] - pointx[j + 1];
+
+				pointy[j] = pointy[j] + pointy[j + 1];
+				pointy[j + 1] = pointy[j] - pointy[j + 1];
+				pointy[j] = pointy[j] - pointy[j + 1];
+			}
+		}
+	}
+	//calculate paras
+	int xa, xb, xc, xd, ya, yb, yc, yd;
+	xa = pointx[0];
+	xb = pointx[1];
+	xc = pointx[2];
+	xd = pointx[3];
+	ya = pointy[0];
+	yb = pointy[1];
+	yc = pointy[2];
+	yd = pointy[3];
+	cout << xa << "," << ya << "\t" << xb << "," << yb << endl;
+	cout << xc << "," << yc << "\t" << xd << "," << yd << endl;
+	//calculate trans matrix
+	//while (1);
+	double a, b, c, d, e, f, g, h;
+	CImg<unsigned char> result(600,800,1,1);
+	int x1 = 0, x3 = 0, y1 = 0, y2 = 0, x2 = result.width() - 1, x4 = result.width() - 1, y3 = result.height() - 1, y4 = result.height() - 1;
+
+	CImg<float> A(4, 4, 1, 1);
+	A(0, 0) = x1;
+	A(0, 1) = x2;
+	A(0, 2) = x3;
+	A(0, 3) = x4;
+
+	A(1, 0) = y1;
+	A(1, 1) = y2;
+	A(1, 2) = y3;
+	A(1, 3) = y4;
+
+	A(2, 0) = x1 * y1;
+	A(2, 1) = x2 * y2;
+	A(2, 2) = x3 * y3;
+	A(2, 3) = x4 * y4;
+
+	A(3, 0) = 1;
+	A(3, 1) = 1;
+	A(3, 2) = 1;
+	A(3, 3) = 1;
+
+	CImg<float> bv(1, 4, 1, 1), cv(1, 4, 1, 1);
+	bv(0, 0) = xa;
+	bv(0, 1) = xb;
+	bv(0, 2) = xc;
+	bv(0, 3) = xd;
+
+	cv(0, 0) = ya;
+	cv(0, 1) = yb;
+	cv(0, 2) = yc;
+	cv(0, 3) = yd;
+
+	auto xParas = bv.get_solve(A);
+	auto yParas = cv.get_solve(A);
+	a = xParas(0, 0);
+	b = xParas(0, 1);
+	c = xParas(0, 2);
+	d = xParas(0, 3);
+
+	e = yParas(0, 0);
+	f = yParas(0, 1);
+	g = yParas(0, 2);
+	h = yParas(0, 3);
+	////trans from source to result
+	cimg_forXY(result, x, y) {
+		double xsrc = a * x + b * y + c * x*y + d;
+		double ysrc = e * x + f * y + g * x*y + h;
+		//pa pb
+		//pc pd
+		
+		result(x, y) = newsrc(xsrc,ysrc);
+
+		/*result(x, y, 0) = source(xsrc,ysrc,0);
+		result(x, y, 1) = source(xsrc, ysrc, 1);
+		result(x, y, 2) = source(xsrc, ysrc, 2);*/
+	}
+	result.display();
+
+	//reduce the side black
+	cimg_forXY(result, x, y) {
+		if (x <= 5 || y <= 5 || x >= result.width() - 5 || y >= result.height() - 5) {
+			result(x, y) = 255;
+		}
+	}
+	//row divise
+	int *rowsum  = new int[result.height()];
+	for (int i = 0; i < result.height(); i++) {
+		rowsum[i] = 0;
+	}
+	//int *colsum = new int[result.width()];
+	cimg_forXY(result, x, y) {
+		rowsum[y] += result(x, y) == 0 ? 1 : 0;
+	}
+	vector<int> marginUP;
+	vector<int> marginDown;
+	for (int i = 0; i < result.height()-1; i++) {
+		if (rowsum[i] == 0 && rowsum[i + 1] > 0) {//up
+			marginUP.push_back(i + 1);
+		}
+		else if (rowsum[i] > 0 && rowsum[i + 1] == 0) {//down
+			marginDown.push_back(i);
+		}
+	}
+	assert(marginUP.size() == marginDown.size() && marginDown.size() == 3);//there are 3 rows of numbers;
+
+	CImg<unsigned char> stuNum(result.width(), marginDown[0] - marginUP[0] + 1, 1, 1);
+	CImg<unsigned char> phone(result.width(), marginDown[1] - marginUP[1] + 1, 1, 1);
+	CImg<unsigned char> priID(result.width(), marginDown[2] - marginUP[2], 1, 1);
+
+	cimg_forXY(stuNum, x, y) {
+		stuNum(x, y) = result(x, y + marginUP[0]);
+	}
+	cimg_forXY(phone, x, y) {
+		phone(x, y) = result(x, y + marginUP[1]);
+	}
+	cimg_forXY(priID, x, y) {
+		priID(x, y) = result(x, y + marginUP[2]);
+	}
+	stuNum.display();
+	phone.display();
+	priID.display();
+	//result.display();
+
+	delete[] rowsum;
+	rowsum = nullptr;
+	//col divise
+	//stunumbers division
+	int * colsum = new int[stuNum.width()];
+	for (int i = 0; i < stuNum.width(); i++) {
+		colsum[i] = 0;
+	}
+	cimg_forXY(stuNum, x, y) {
+		colsum[x] += stuNum(x, y) == 0 ? 1 : 0;//black
+	}
+	vector<int> marginLeft;
+	vector<int> marginRight;
+	for (int i = 0; i < stuNum.width()-1; i++) {
+		if (colsum[i] == 0 && colsum[i + 1] > 0) {
+			marginLeft.push_back(i + 1);
+		}
+		else if (colsum[i] > 0 && colsum[i + 1] == 0) {
+			marginRight.push_back(i);
+		}
+	}
+	assert(marginLeft.size() == marginRight.size() && marginLeft.size() == 8);//assert there are 8 number of student numbers
+	vector<CImg<unsigned char>> dividedStuNum;
+	for (int i = 0; i < 8; i++) {
+		CImg<unsigned char> temp(marginRight[i] - marginLeft[i]+1, stuNum.height(), 1, 1);
+		cimg_forXY(temp, x, y) {
+			temp(x, y) = 255-stuNum(x + marginLeft[i], y);
+		}
+		auto f = getFeatureFromSingleImage(temp);
+		auto l = Mat(1, 1, CV_32SC1);
+		svm->predict(f, l);
+		auto label = l.at<float>(0, 0);
+		ss << (int)label;
+		//studentNumber = studentNumber * 10 + (int)label;
+		cout <<"label"<< label << endl;
+		//temp.display();
+		dividedStuNum.push_back(temp);
+	}
+	ss >> studentNumber;
+	cout << "studentNumber:" << studentNumber << endl;
+	ss.clear();
+	//phone division
+	marginLeft.clear();
+	marginRight.clear();
+	delete[] colsum;
+	colsum = new int[phone.width()];
+	for (int i = 0; i < phone.width(); i++) {
+		colsum[i] = 0;
+	}
+	cimg_forXY(phone, x, y) {
+		colsum[x] += phone(x, y) == 0 ? 1 : 0;
+	}
+	for (int i = 0; i < phone.width()-1; i++) {
+		if (colsum[i] == 0 && colsum[i + 1] > 0) {
+			marginLeft.push_back(i + 1);
+		}
+		else if (colsum[i] > 0 && colsum[i + 1] == 0) {
+			marginRight.push_back(i);
+		}
+	}
+	assert(marginLeft.size() == marginRight.size() && marginLeft.size() == 11);
+
+	for (int i = 0; i < 11; i++) {
+		CImg<unsigned char> temp(marginRight[i] - marginLeft[i]+1, phone.height(), 1, 1);
+		cimg_forXY(temp, x, y) {
+			temp(x, y) = 255-phone(x+marginLeft[i], y);
+		}
+		//predict
+		auto f = getFeatureFromSingleImage(temp);
+		auto l = Mat(1, 1, CV_32SC1);
+		svm->predict(f, l);
+		auto label = l.at<float>(0, 0);
+		ss << (int)label;
+		cout << "label:" << label << endl;
+	}
+	ss >> phoneNumber;
+	cout << "phone number\t" << phoneNumber << endl;
+	ss.clear();
+	//private id division
+	marginLeft.clear();
+	marginRight.clear();
+	delete[] colsum;
+	colsum = new int[priID.width()];
+	for (int i = 0; i < priID.width(); i++) {
+		colsum[i] = 0;
+	}
+	cimg_forXY(priID, x, y) {
+		colsum[x] += priID(x, y) == 0 ? 1 : 0;
+	}
+	for (int i = 0; i < priID.width() - 1; i++) {
+		if (colsum[i] == 0 && colsum[i + 1] > 0) {
+			marginLeft.push_back(i + 1);
+		}
+		else if (colsum[i] > 0 && colsum[i + 1] == 0) {
+			marginRight.push_back(i);
+		}
+	}
+	assert(marginLeft.size() == marginRight.size() && marginLeft.size() == 18);
+
+	for (int i = 0; i < 18; i++) {
+		CImg<unsigned char> temp(marginRight[i] - marginLeft[i] + 1, priID.height(), 1, 1);
+		cimg_forXY(temp, x, y) {
+			temp(x, y) = 255 - priID(x + marginLeft[i], y);
+		}
+		//predict
+		auto f = getFeatureFromSingleImage(temp);
+		auto l = Mat(1, 1, CV_32SC1);
+		svm->predict(f, l);
+		auto label = l.at<float>(0, 0);
+		ss << (int)label;
+		cout << "label:" << label << endl;
+	}
+	ss >> privateIdentityNumber;
+	cout << "private identity number:\t" << privateIdentityNumber << endl;
+	auto features = getFeatureFromSingleImage(src);
+	auto dataMat = Mat(1, n_features, CV_32FC1);
+	for (int i = 0; i < n_features; i++) {
+		dataMat.at<float>(0, i) = features[i];
+	}
+	//auto result = Mat(1, 1, CV_32SC1);
+
+	//svm->predict(dataMat, result);
+	//cout << "test single digit result:" << "LABEL " << result.at<float>(0, 0);
+}
+void getFilePath(string mainDir,vector<string>& files, string filter)
+{
+	//文件句柄  
+	//mainDir = "D:\\ftp";
+	files.clear();
+	const char *dir = mainDir.c_str();
+	_chdir(dir);
+	intptr_t hFile;
+	_finddata_t fileinfo;
+
+	if ((hFile = _findfirst(filter.c_str(), &fileinfo)) != -1)
+	{
+		do
+		{
+			if (!(fileinfo.attrib & _A_SUBDIR))//找到文件
+			{
+				char filename[_MAX_PATH];
+				strcpy_s(filename, dir);
+				strcat_s(filename, "\\");
+				strcat_s(filename, fileinfo.name);
+				string temfilename = filename;
+				//cout << temfilename << endl;
+				files.push_back(temfilename);
+			}
+		} while (_findnext(hFile, &fileinfo) == 0);
+		//cout << "while end" << endl;
+		_findclose(hFile);
+	}
+}
